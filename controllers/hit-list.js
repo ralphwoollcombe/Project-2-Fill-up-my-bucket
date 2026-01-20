@@ -66,12 +66,13 @@ router.get('/:listId/edit', async (req, res) => {
         res.redirect('/')
     };
 })
-router.put('/:listId/edit', async (req, res) => {
+
+router.put('/:listId', async (req, res) => {
   try {
     const listItem = await List.findById(req.params.listId);
     if (listItem.owner.equals(req.session.user._id)) {
-      await listItem.updateOne(req.body);
-      listItem.seen = true;
+    req.body.seen = true;
+    await listItem.updateOne(req.body);
       res.redirect('/list');
       console.log('This item is now spotted', listItem)
     } else {
