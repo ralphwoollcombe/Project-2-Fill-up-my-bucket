@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const List = require('../models/list');
-const User = require('../models/user');
-const Country = require('../models/country');
-const Habitat = require('../models/habitat');
+const List = require('../models/list.js');
+const User = require('../models/user.js');
+const Country = require('../models/country.js');
+const Habitat = require('../models/habitat.js');
 
 router.get('/', async (req, res) => {
     try {

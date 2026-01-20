@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spot List</title>
+    <title>Habitats</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>My Spot List</h1>
-    <h2>Birds I Have Spotted!</h2>
+    <h1>Habitats</h1>
     <ul>
-        <% listItems.forEach(item => { %>
-        <li><a href="/list/<%= item._id %>"><%= item.name %></a></li>
+        <% habitats.forEach(habitat => { %>
+        <li><a href="/habitat/<%= habitat._id %>"><%= habitat.name %></a></li>
         <% }) %>
     </ul>
     <a href="/list/new">Add New Sighting</a><br>

@@ -5,7 +5,11 @@ const countrySchema = mongoose.Schema({
         type: String,
         required: true,
     },   
+      habitat: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Habitat',
+  }]
 });
 
-const Country = mongoose.model('country', countrySchema)
+const Country = mongoose.model('Country', countrySchema)
 module.exports = Country;

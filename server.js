@@ -7,8 +7,10 @@ const session = require('express-session');
 const authController = require('./controllers/auth.js');
 const listController = require('./controllers/list.js');
 const hitListController = require('./controllers/hit-list.js')
+const habitatController = require("./controllers/habitat.js")
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
+const populateCountries = require('./populate.js');
 const MongoStore = require('connect-mongo');
 
 dotenv.config();
@@ -19,9 +21,13 @@ const port = process.env.PORT ? process.env.PORT : "3000";
 
 mongoose.connect(process.env.MONGODB_URI);
 
-mongoose.connection.on('connected', () => {
-    console.log(`Connected to MongoDB ${mongoose.connection.name}`)
+mongoose.connection.on('connected', async () => {
+    console.log(`Connected to MongoDB ${mongoose.connection.name}`);
+    await populateCountries()
+    // await populateHabitats();
 })
+
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -49,7 +55,8 @@ app.get('/', (req, res) => {
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/list', listController);
-app.use('/hit-list', hitListController)
+app.use('/hit-list', hitListController);
+app.use('/habitat', habitatController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

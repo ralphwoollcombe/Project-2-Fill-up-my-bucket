@@ -4,13 +4,13 @@ const habitatSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
-    },   
-    country: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Country',
-    required: true
-  }
+    },
+    country: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Country',
+    }]   
 });
 
-const Habitat = mongoose.model('habitat', habitatSchema)
+const Habitat = mongoose.model('Habitat', habitatSchema)
+
 module.exports = Habitat;
