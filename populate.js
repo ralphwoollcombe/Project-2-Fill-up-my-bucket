@@ -12,31 +12,32 @@ const startingCountries = [
 
 //Functions
 const populateCountries = async () => {
-  try {
-    await Country.deleteMany({});
-    await Habitat.deleteMany({});
+  const allCountries = await Country.find({});
+    const allHabitats = await Habitat.find({});
+    if (allCountries.length === 0 && allHabitats.length === 0)
+      {try {
     for (const country of startingCountries) {
       const newCountries = new Country({name: country.name});
-          console.log('my new countries', newCountries);
+          // console.log('my new countries', newCountries);
           for (const hab of country.habitat) {
           let habitat = await Habitat.findOne({name: hab});
           if (!habitat) 
             {habitat = new Habitat({ name: hab })};
-          console.log('my new habitats', habitat);
+          // console.log('my new habitats', habitat);
           if (!habitat.country.includes(newCountries._id)) 
             {habitat.country.push(newCountries._id)};          
           if (!newCountries.habitat.includes(habitat._id)) 
           {newCountries.habitat.push(habitat._id)};
           await habitat.save();
-          console.log(habitat) 
+          // console.log(habitat) 
           }
     await newCountries.save();
-    console.log(newCountries);
+    // console.log(newCountries);
     }
   } catch (error) {
     console.log(error)
   }
-}
+}}
 
 // const populateHabitats = async () => {
 //     try {

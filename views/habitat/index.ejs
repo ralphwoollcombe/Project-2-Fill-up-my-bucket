@@ -9,9 +9,10 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Habitats</h1>
     <ul>
-        <% habitats.forEach(habitat => { %>
+        <% habitats.forEach(habitat => { 
+        if (habitat.country.some(item => {return item._id == user.country})) {%>
         <li><a href="/habitat/<%= habitat._id %>"><%= habitat.name %></a></li>
-        <% }) %>
+        <% }}) %>
     </ul>
     <a href="/list/new">Add New Sighting</a><br>
 </body>

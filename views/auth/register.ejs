@@ -16,11 +16,11 @@
     <input type="password" name="confirmPassword" id="confirmPassword" required />
     <label for="name">Name:</label>
     <input type="text" name="name" id="name" required />
-    <label for="residentCountry">Resident Country:</label>
-    <select name="residentCountry" id="residentCountry">
-        <option value="botswana">Botswana</option>
-        <option value="france">France</option>
-        <option value="united kingdom" selected>United Kingdom</option>
+    <label for="country">Resident Country:</label>
+    <select name="country" id="country">
+      <% countries.forEach(country => { %>
+        <option value="<%= country._id %>"><%= country.name %></option>    
+        <% }) %>
     </select>
     <button type="submit">Register</button>
   </form>

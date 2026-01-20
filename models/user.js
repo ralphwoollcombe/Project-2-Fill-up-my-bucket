@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   name: String,
-  residentCountry: {
+  country: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Country',
     required: true,

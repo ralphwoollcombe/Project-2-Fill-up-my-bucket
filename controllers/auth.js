@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-
+const Country = require('../models/country.js');
 const User = require('../models/user.js');
 
-router.get('/register', (req, res) => {
-  res.render('auth/register.ejs');
+router.get('/register', async (req, res) => {
+  const countries = await Country.find({});
+  // console.log('countries', countries)
+  res.render('auth/register.ejs', {
+    countries: countries
+  });
 });
 
 router.get('/sign-in', (req, res) => {
@@ -35,10 +39,16 @@ router.post('/register', async (req, res) => {
     // Must hash the password before sending to the database
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     req.body.password = hashedPassword;
-  
+    
+    //Assign User a referenced country
+    // const country = await Country.findById(req.body.country)
+    // console.log('referenced country in user', country)
+    // req.body.country = country
+    // console.log('the user country', country)
+
     // All ready to create the new user!
     await User.create(req.body);
-  
+    console.log(User)
     res.redirect('/auth/sign-in');
   } catch (error) {
     console.log(error);
@@ -70,7 +80,7 @@ router.post('/sign-in', async (req, res) => {
       username: userInDatabase.username,
       _id: userInDatabase._id,
       name: userInDatabase.name,
-      residentCountry: userInDatabase.residentCountry
+      country: userInDatabase.country
     };
     req.session.save(() => {
       res.redirect('/');
