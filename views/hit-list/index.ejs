@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hit List</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>My Hit List</h1>
+    <hh2>Birds I Hope to Spot</hh2>
+    <ul>
+        <% listItems.forEach(item => { %>
+        <li><%= item.name %></li>
+        <form action="/hit-list/<%=item._id%>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+        <a href="/hit-list/<%= item._id %>/edit">Add to Spot List</a>
+        <% }) %>
+    </ul>
+    <a href="/hit-list/new">Add New Species To Hit List</a><br>
+    <a href="/list">Go To Spot List</a>
+</body>
+</html>

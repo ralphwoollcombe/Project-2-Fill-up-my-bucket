@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot List</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>My Spot List</h1>
+    <h2>Birds I Have Spotted!</h2>
+    <ul>
+        <% listItems.forEach(item => { %>
+        <li><a href="/list/<%= item._id %>"><%= item.name %></a></li>
+        <% }) %>
+    </ul>
+    <a href="/list/new">Add New Sighting</a><br>
+    <a href="/list/hit-list">Go To Hit List</a>
+</body>
+</html>

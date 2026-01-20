@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Species</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add a New Species!</h1>
+    <form action="/hit-list/<%=listItem._id%>?_method=PUT" method="POST">
+        <label for="name">Species Name:</label>
+        <input type="text" name="name" id="name" value="<%= listItem.name %>"/>
+        <select name="class" id="class">
+            <option value="mammal" <%= listItem.class === 'mammal' ? 'selected' : '' %>>Mammal</option>
+            <option value="bird" <%= listItem.class === 'bird' ? 'selected' : '' %>>Bird</option>
+            <option value="reptile" <%= listItem.class === 'reptile' ? 'selected' : '' %>>Reptile</option>
+            <option value="amphibian" <%= listItem.class === 'amphibian' ? 'selected' : '' %>>Amphibian</option>
+            <option value="fish" <%= listItem.class === 'fish' ? 'selected' : '' %>>Fish</option>
+            <option value="invertebrate" <%= listItem.class === 'invertebrate' ? 'selected' : '' %>>Invertebrate</option>
+        </select></br>
+        <label for="description">Description: </label>
+        <textarea type="text" name="description" id="description"></textarea></br>
+        <label for="behaviour">Behaviour: </label>
+        <input type="text" name="behaviour" id="behaviour"/></br>
+        <label for="habitat">Habitat:</label>
+        <select name="habitat" id="habitat">
+            <option value="urban">Urban Area</option>
+            <option value="grassland">Grassland</option>
+            <option value="mountain">Mountain</option>
+            <option value="coast">Coast</option>
+            <option value="wetlands">Wetlands</option>
+            <option value="forest">Forest</option>
+        </select></br>
+        <label for="country">Country:</label>
+        <select name="country" id="country">
+           <option value="botswana" <%= listItem.country === 'botswana' ? 'selected' : '' %>>Botswana</option>
+            <option value="france" <%= listItem.country === 'france' ? 'selected' : '' %>>France</option>
+            <option value="united kingdom" <%= listItem.country === 'united kingdom' ? 'selected' : '' %>>United Kingdom</option>
+        </select></br>
+        <label for="location">Local Location:</label>
+        <input type="text" name="location" id="location" />
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date"/>
+        <button type="submit">Edit This Species</button>
+    </form>
+</body>
+</html>

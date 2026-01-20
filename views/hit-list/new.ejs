@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Species</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add a New Species To Hit List!</h1>
+    <form action="/hit-list" method="POST">
+        <label for="name">Species Name:</label>
+        <input type="text" name="name" id="name" />
+        <select name="class" id="class">
+            <option value="mammal">Mammal</option>
+            <option value="bird" selected>Bird</option>
+            <option value="reptile">Reptile</option>
+            <option value="amphibian">Amphibian</option>
+            <option value="fish">Fish</option>
+            <option value="invertebrate">Invertebrate</option>
+        </select></br>
+        <label for="country">Country:</label>
+        <select name="country" id="country">
+           <option value="botswana">Botswana</option>
+            <option value="france">France</option>
+            <option value="united kingdom" selected>United Kingdom</option>
+        </select></br>
+        <button type="submit">Add To Hit List</button>
+    </form>
+</body>
+</html>

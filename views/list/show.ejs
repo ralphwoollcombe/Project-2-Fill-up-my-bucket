@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listItem.name %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Species: <%= listItem.name %></h1>
+    <h2>Location spotted:</h2> 
+    <p><%= listItem.location %></p>
+    <h2>Date spotted:</h2> 
+    <p><%= listItem.date %></p>
+    <h2>Description:</h2> 
+    <p><%= listItem.description %></p>
+    <h2>Behaviour:</h2> 
+    <p><%= listItem.behaviour %></p>
+    <h2>Country:</h2> 
+    <p><%= listItem.country %></p>
+    <h2>Habitat:</h2> 
+    <p><%= listItem.habitat %></p>
+    <h2>Class:</h2> 
+    <p><%= listItem.class %></p>
+    <h2>Class:</h2> 
+    <p><%= listItem.class %></p>
+    <label for="'seen">Seen:</label> 
+    <input type="checkbox" name="seen" id="seen" checked disabled/>
+    <form action="/list/<%=listItem._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete This Species</button>
+    </form>
+    <a href="/list/<%= listItem._id %>/edit">Edit This Species</a>
+</body>
+</html>
