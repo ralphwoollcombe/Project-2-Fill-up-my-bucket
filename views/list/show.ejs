@@ -7,11 +7,11 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Species: <%= listItem.displayName %></h1>
+    <h1>Species sighted: <%= listItem.displayName %></h1>
     <h2>Location spotted:</h2> 
     <p><%= listItem.location %></p>
     <h2>Date spotted:</h2> 
-    <p><%= listItem.date %></p>
+    <p><%= listItem.formattedDate %></p>
     <h2>Description:</h2> 
     <p><%= listItem.description %></p>
     <h2>Behaviour:</h2> 

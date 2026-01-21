@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= habitat.name %> Species List</title>
+    <title> <%= habitat.displayName %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= habitat.name %> Species List</h1>
+    <h1><%= habitat.displayName %></h1>
     <h2>Species spotted in the <%= habitat.name %>!</h2>
     <ul>
         <% species.forEach(item => { %>

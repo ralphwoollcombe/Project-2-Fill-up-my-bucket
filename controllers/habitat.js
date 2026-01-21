@@ -8,7 +8,7 @@ const List = require('../models/list.js');
 
 router.get('/', async (req, res) => {
     try {
-    let habitats = await Habitat.find();
+    let habitats = await Habitat.find({});
     habitats.forEach(habitat => {habitat.displayName = habitat.name.charAt(0).toUpperCase() + habitat.name.slice(1)})
     // console.log('all habitats', habitats);
     // console.log('session user', req.session.user)
@@ -50,8 +50,12 @@ router.post('/', async (req, res) => {
 
 router.get('/:habitatId',async (req, res) => {
     const habitat = await Habitat.findById(req.params.habitatId)
+    habitat.displayName = habitat.name.charAt(0).toUpperCase() + habitat.name.slice(1)
     console.log('this is the habitat', habitat)
-    const species = await List.find({habitat: req.params.habitatId})
+    const species = await List.find({
+        habitat: req.params.habitatId,
+        owner: res.locals.user._id
+    })
     .populate('habitat')
     .populate('country')
     .populate('owner');

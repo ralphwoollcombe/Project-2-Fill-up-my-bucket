@@ -8,7 +8,10 @@ const Habitat = require('../models/habitat.js');
 
 router.get('/', async (req, res) => {
     try {
-    const getHitListItems = await List.find({seen: false}). populate('owner');
+    const getHitListItems = await List.find({
+        seen: false,
+        owner: res.locals.user._id
+    }). populate('owner');
     console.log('all hit list items', getHitListItems);
     res.render('hit-list/index.ejs', {
         listItems: getHitListItems,

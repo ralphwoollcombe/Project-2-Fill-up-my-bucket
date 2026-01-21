@@ -10,7 +10,7 @@
     <h1>Species: <%= species[0].displayName %></h1>
     <% species.forEach((sighting, index) => { %>
     <h2>Sighting <%= index + 1 %>:</h2> 
-    <p>Sighted on: <%= sighting.date %>, Sighting location: <%= sighting.location %></p>
+    <p>Date: <%= sighting.formattedDate %></br> Location: <%= sighting.location %></p>
     <a href="/list/<%= sighting._id %>">Sighting Page</a>
     <% }) %>
     <a href="/species/<%= species[0].name %>/new">Add new <%= species[0].displayName %> sighting</a>

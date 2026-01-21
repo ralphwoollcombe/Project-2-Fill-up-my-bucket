@@ -8,9 +8,15 @@ const Habitat = require('../models/habitat.js');
 
 router.get('/', async (req, res) => {
     try {
-    const allSpecies = await List.distinct('name');
-    console.log(allSpecies);
-    res.render('species/index.ejs', {species: allSpecies});
+    const allSpecies = await List.find({
+        owner: res.locals.user._id
+    })
+    const uniqueNames = [...new Set(allSpecies.map(bird => bird.name))];
+    console.log(uniqueNames)
+    // await List.distinct('name');
+    const capUniqueNames = uniqueNames.map(bird => bird.charAt(0).toUpperCase() + bird.slice(1));
+
+    res.render('species/index.ejs', {species: capUniqueNames});
     } catch (error) {
         console.log(error);
         res.redirect('/')
@@ -28,7 +34,17 @@ router.get('/:speciesName/new', async (req, res) => {
 
 router.get('/:speciesName', async (req, res) => {
     try {
-    const species = await List.find({name: req.params.speciesName});
+    const species = await List.find({
+        name: req.params.speciesName,
+          owner: res.locals.user._id
+    });
+    species.forEach(bird => {
+    const date = bird.date;
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    bird.formattedDate = `${day}.${month}.${year}`
+    })
     species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
     console.log(species);
     res.render('species/show.ejs', {species: species});

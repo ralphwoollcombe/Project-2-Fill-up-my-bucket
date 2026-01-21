@@ -8,7 +8,18 @@ const Habitat = require('../models/habitat.js');
 
 router.get('/', async (req, res) => {
     try {
-    const getListItems = await List.find({seen: true}). populate('owner');
+    const getListItems = await List.find({
+        seen: true,
+        owner: res.locals.user._id
+    }). populate('owner');
+    getListItems.forEach(bird => {
+    const date = bird.date;
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    bird.formattedDate = `${day}.${month}.${year}`
+    })
+    getListItems.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
     console.log('all spot list items', getListItems);
     res.render('list/index.ejs', {
         listItems: getListItems,
@@ -47,6 +58,11 @@ router.post('/', async (req, res) => {
 router.get('/:listId', async (req,res) => {
   const listItem = await List.findById(req.params.listId)
   .populate('country').populate('habitat');
+  const date = listItem.date;
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  listItem.formattedDate = `${day}.${month}.${year}`
   listItem.displayName = listItem.name.charAt(0).toUpperCase() + listItem.name.slice(1);
     res.render("list/show.ejs", {
       listItem: listItem
