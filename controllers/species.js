@@ -47,6 +47,11 @@ router.get('/:speciesName', async (req, res) => {
     })
     species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
     console.log(species);
+    species.forEach((sighting, index) => { 
+        sighting.habitat.forEach((habitat, index) => {
+        
+        })
+    })
     res.render('species/show.ejs', {species: species});
     } catch (error) {
         console.log(error);
