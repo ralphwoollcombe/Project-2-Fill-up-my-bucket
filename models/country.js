@@ -4,6 +4,7 @@ const countrySchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
+        lowercase: true
     },   
       habitat: [{
     type: mongoose.Schema.Types.ObjectId,

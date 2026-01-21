@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= species[0].name %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Species: <%= species[0].displayName %></h1>
+    <% species.forEach((sighting, index) => { %>
+    <h2>Sighting <%= index + 1 %>:</h2> 
+    <p>Sighted on: <%= sighting.date %>, Sighting location: <%= sighting.location %></p>
+    <a href="/list/<%= sighting._id %>">Sighting Page</a>
+    <% }) %>
+    
+</body>
+</html>

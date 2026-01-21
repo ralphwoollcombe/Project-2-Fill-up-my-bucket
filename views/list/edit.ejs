@@ -41,7 +41,9 @@
         <label for="location">Local Location:</label>
         <input type="text" name="location" id="location" value="<%= listItem.location %>"/>
         <label for="date">Date:</label>
-        <input type="date" name="date" id="date" <%= listItem.date %>/>
+        <input type="date" name="date" id="date" value='<%= listItem.date %>'/>
+          <label for="numberSeen">Number Spotted:</label>
+        <input type="number" name="numberSeen" id="numberSeen" value="<%= listItem.numberSeen %>"/>
         <button type="submit">Edit This Species</button>
     </form>
 </body>

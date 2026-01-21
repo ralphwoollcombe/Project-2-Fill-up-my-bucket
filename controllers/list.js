@@ -26,7 +26,14 @@ router.get('/new', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const newListItem = new List(req.body);
+       const country = await Country.findOne({name: req.body.country})
+       const habitat = await Habitat.findOne({name: req.body.habitat})
+       console.log('this is the country', country)
+       console.log('this is the habitat', habitat)
+        req.body.country = [country._id]
+        req.body.habitat = [habitat._id];
+       console.log(req.body)
+       const newListItem = new List(req.body);
         newListItem.owner = req.session.user._id;
         console.log(newListItem);
         newListItem.save();
@@ -38,9 +45,9 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/:listId', async (req,res) => {
-  const listItem = await List.findById(
-    req.params.listId
-  );
+  const listItem = await List.findById(req.params.listId)
+  .populate('country').populate('habitat');
+  listItem.displayName = listItem.name.charAt(0).toUpperCase() + listItem.name.slice(1);
     res.render("list/show.ejs", {
       listItem: listItem
     });

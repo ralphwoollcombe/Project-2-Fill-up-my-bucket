@@ -9,6 +9,7 @@ const habitatController = require("./controllers/habitat.js")
 const authController = require('./controllers/auth.js');
 const listController = require('./controllers/list.js');
 const hitListController = require('./controllers/hit-list.js')
+const speciesController = require('./controllers/species.js')
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const MongoStore = require('connect-mongo');
@@ -58,6 +59,7 @@ app.use(isSignedIn);
 app.use('/list', listController);
 app.use('/hit-list', hitListController);
 app.use('/habitat', habitatController);
+app.use('/species', speciesController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

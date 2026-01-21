@@ -4,6 +4,8 @@ const listSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
+        lowercase: true,
+        trim: true
     },
     class: {
         type: String,
@@ -18,22 +20,29 @@ const listSchema = mongoose.Schema({
     },
     location: {
         type: String,
+        required: true,
     },
     date: {
         type: Date,
+        required: true,
     },
-    habitat:  {
-        type: String
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref: 'Habitat',
-        // required: true,
-    },
-    country: {
-        type: String
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref: 'Country',
-        // required: true,
-    },
+    habitat:  [{
+        // type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Habitat',
+        required: true,
+    }],
+    country: [{
+        // type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Country',
+        required: true,
+    }],
+    numberSeen: {
+        type: Number,
+        min: 1,
+        max: 50
+    }, 
     seen: {
         type: Boolean,
         default: true
