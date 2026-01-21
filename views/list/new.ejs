@@ -25,12 +25,10 @@
         <input type="text" name="behaviour" id="behaviour"/></br>
         <label for="habitat">Habitat:</label>
         <select name="habitat" id="habitat">
-            <option value="urban">Urban Area</option>
-            <option value="grassland">Grassland</option>
-            <option value="mountain">Mountain</option>
-            <option value="coast">Coast</option>
-            <option value="wetland">Wetland</option>
-            <option value="woodland">Woodland</option>
+            <% habitats.forEach(habitat => { %>
+            <% if (habitat.country.includes(user.country)) { %>
+            <option value="<%= habitat.name %>"><%= habitat.name %></option>    
+            <% }}) %>
         </select></br>
         <label for="country">Country:</label>
         <select name="country" id="country">

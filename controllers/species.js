@@ -24,12 +24,12 @@ router.get('/', async (req, res) => {
 })
 router.get('/:speciesName/new', async (req, res) => {
     const speciesName = req.params.speciesName
-    const country = await Country.find();
-    const habitat = await Habitat.find();
+    const countries = await Country.find();
+    const habitats = await Habitat.find();
     const species = await List.findOne({name: speciesName})
     species.displayName = species.name.charAt(0).toUpperCase() + species.name.slice(1);
     console.log('this is the species', species)
-    res.render(`species/new.ejs`, {country, habitat, species});
+    res.render(`species/new.ejs`, {countries, habitats, species});
 });
 
 router.get('/:speciesName', async (req, res) => {

@@ -30,9 +30,13 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/new', async (req, res) => {
-    const country = await Country.find();
-    const habitat = await Habitat.find();
-    res.render('list/new.ejs', {country, habitat});
+    const countries = await Country.find();
+    const habitats = await Habitat.find();
+    res.render('list/new.ejs', {
+        countries, 
+        habitats,
+        user: req.session.user
+    });
 });
 
 router.post('/', async (req, res) => {
@@ -87,10 +91,14 @@ router.delete('/:listId', async (req, res) => {
 
 router.get('/:listId/edit', async (req, res) => {
     try {
-        const listItem = await List.findById(req.params.listId);
-        console.log('List Item ID', req.params.listId)
+        const countries = await Country.find();
+        const habitats = await Habitat.find();
+        const listItem = await List.findById(req.params.listId).populate('habitat');
+        console.log('List Item ID', listItem)
         res.render('list/edit.ejs', {
             listItem: listItem,
+            habitats,
+            countries
         })
     } catch (error) {
         console.log(error);
