@@ -9,11 +9,15 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Habitats</h1>
     <ul>
-        <% habitats.forEach(habitat => { 
-        if (habitat.country.some(item => {return item._id == user.country})) {%>
-        <li><a href="/habitat/<%= habitat._id %>"><%= habitat.name %></a></li>
+        <% habitats.forEach(habitat => { %>
+       <% if (habitat.country.some(item => {return item._id == user.country})) {%>
+        <li><a href="/habitat/<%= habitat._id %>"><%= habitat.displayName %></a></li>
         <% }}) %>
     </ul>
-    <a href="/list/new">Add New Sighting</a><br>
+    <form action="/habitat" method="POST">
+    <label for="name"></label>
+    <input type='text' name="name" id="newHabitat"/>
+    <button type="submit">Add New Habitat</button>
+    </form>
 </body>
 </html>

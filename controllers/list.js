@@ -32,10 +32,10 @@ router.post('/', async (req, res) => {
        console.log('this is the habitat', habitat)
         req.body.country = [country._id]
         req.body.habitat = [habitat._id];
-       console.log(req.body)
+    //    console.log(req.body)
        const newListItem = new List(req.body);
         newListItem.owner = req.session.user._id;
-        console.log(newListItem);
+        // console.log(newListItem);
         newListItem.save();
         res.redirect('/list');
     } catch (error) {
