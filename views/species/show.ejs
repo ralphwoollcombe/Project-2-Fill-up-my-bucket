@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= species[0].name %></title>
+    <title><%= species[0].displayName %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
@@ -13,6 +13,6 @@
     <p>Sighted on: <%= sighting.date %>, Sighting location: <%= sighting.location %></p>
     <a href="/list/<%= sighting._id %>">Sighting Page</a>
     <% }) %>
-    
+    <a href="/species/<%= species[0].name %>/new">Add new <%= species[0].displayName %> sighting</a>
 </body>
 </html>

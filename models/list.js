@@ -41,7 +41,6 @@ const listSchema = mongoose.Schema({
     numberSeen: {
         type: Number,
         min: 1,
-        max: 50
     }, 
     seen: {
         type: Boolean,

@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Country = require('../models/country.js');
 const Habitat = require('../models/habitat.js');
+const List = require('../models/list.js');
+
 
 router.get('/', async (req, res) => {
     try {
@@ -46,25 +48,18 @@ router.post('/', async (req, res) => {
     }
 })
 
-// router.put('/', async (req, res) => {
-//     try {
-//         req.body.name.toLowerCase();
-//         const habitatExists = await Habitat.findOne({name: req.body.name})
-//         console.log('This is the req.body', req.body.name)
-//         console.log('This habitat exists', habitatExists)
-//         if (!habitatExists) {
-//         //     req.body.country = req.session.user.country
-//         // } else {
-//         const newHabitat = new Habitat(req.body)
-//         req.body.country = req.session.user.country
-//         req.body
-//         newHabitat.save();
-//         console.log('This is the new habitat', newHabitat)
-//         }
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/');
-//     }
-// })
+router.get('/:habitatId',async (req, res) => {
+    const habitat = await Habitat.findById(req.params.habitatId)
+    console.log('this is the habitat', habitat)
+    const species = await List.find({habitat: req.params.habitatId})
+    .populate('habitat')
+    .populate('country')
+    .populate('owner');
+    console.log('species', species);
+    res.render('habitat/show.ejs', {
+        species: species,
+        habitat: habitat
+    });
+})
 
 module.exports = router

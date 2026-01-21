@@ -28,8 +28,8 @@ router.post('/', async (req, res) => {
     try {
        const country = await Country.findOne({name: req.body.country})
        const habitat = await Habitat.findOne({name: req.body.habitat})
-       console.log('this is the country', country)
-       console.log('this is the habitat', habitat)
+    //    console.log('this is the country', country)
+    //    console.log('this is the habitat', habitat)
         req.body.country = [country._id]
         req.body.habitat = [habitat._id];
     //    console.log(req.body)
