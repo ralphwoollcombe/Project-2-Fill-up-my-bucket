@@ -13,6 +13,15 @@
     <p>Date: <%= sighting.formattedDate %></br> Location: <%= sighting.location %></p>
     <a href="/list/<%= sighting._id %>">Sighting Page</a>
     <% }) %>
-    <a href="/species/<%= species[0].name %>/new">Add new <%= species[0].displayName %> sighting</a>
+    <a href="/species/<%= species[0].name %>/new">Add new <%= species[0].name %> sighting</a>
+    <h2>Habitats:</h2>
+    <ul>
+    <% species.forEach((sighting, index) => { %>
+        <% sighting.habitat.forEach((habitat, index) => { %>
+            
+        <li> <%= sighting.habitat %> </li>
+        <% }) %>
+    <% }) %>
+    </ul>
 </body>
 </html>

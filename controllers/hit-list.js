@@ -22,13 +22,21 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/new', async (req, res) => {
-    const country = await Country.find();
-    const habitat = await Habitat.find();
-    res.render('hit-list/new.ejs', {country, habitat});
+    const countries = await Country.find();
+    const habitats = await Habitat.find();
+    res.render('hit-list/new.ejs', {
+        countries, 
+        habitats,
+        user: req.session.user
+    });
 });
 
 router.post('/', async (req, res) => {
     try {
+        const country = await Country.findOne({name: req.body.country})
+        req.body.country = [country._id]
+        req.body.location = 'No located yet'
+        req.body.date = new Date();
         const newListItem = new List(req.body);
         newListItem.owner = req.session.user._id;
         newListItem.seen = false;
@@ -59,10 +67,15 @@ router.delete('/:listId', async (req, res) => {
 
 router.get('/:listId/edit', async (req, res) => {
     try {
+        const countries = await Country.find();
+        const habitats = await Habitat.find();
         const listItem = await List.findById(req.params.listId);
         console.log('Hit-List Item ID', req.params.listId)
         res.render('hit-list/edit.ejs', {
             listItem: listItem,
+            countries,
+            habitats,
+            user: req.session.user
         })
     } catch (error) {
         console.log(error);
@@ -72,9 +85,13 @@ router.get('/:listId/edit', async (req, res) => {
 
 router.put('/:listId', async (req, res) => {
   try {
-    const listItem = await List.findById(req.params.listId);
+    const country = await Country.findOne({name: req.body.country})
+       const habitat = await Habitat.findOne({name: req.body.habitat})
+       const listItem = await List.findById(req.params.listId);
     if (listItem.owner.equals(req.session.user._id)) {
     req.body.seen = true;
+    req.body.country = [country._id]
+    req.body.habitat = [habitat._id];
     await listItem.updateOne(req.body);
       res.redirect('/list');
       console.log('This item is now spotted', listItem)

@@ -37,7 +37,7 @@ router.get('/:speciesName', async (req, res) => {
     const species = await List.find({
         name: req.params.speciesName,
           owner: res.locals.user._id
-    });
+    }).populate('habitat');
     species.forEach(bird => {
     const date = bird.date;
     const day = String(date.getDate()).padStart(2, '0');

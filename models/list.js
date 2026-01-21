@@ -20,23 +20,20 @@ const listSchema = mongoose.Schema({
     },
     location: {
         type: String,
-        required: true,
+        required: true
     },
     date: {
         type: Date,
-        required: true,
     },
     habitat:  [{
         // type: String
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Habitat',
-        required: true,
     }],
     country: [{
         // type: String
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country',
-        required: true,
     }],
     numberSeen: {
         type: Number,

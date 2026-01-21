@@ -24,19 +24,17 @@
         <label for="behaviour">Behaviour: </label>
         <input type="text" name="behaviour" id="behaviour"/></br>
         <label for="habitat">Habitat:</label>
-        <select name="habitat" id="habitat">
-            <option value="urban">Urban Area</option>
-            <option value="grassland">Grassland</option>
-            <option value="mountain">Mountain</option>
-            <option value="coast">Coast</option>
-            <option value="wetlands">Wetlands</option>
-            <option value="forest">Forest</option>
+         <select name="habitat" id="habitat">
+            <% habitats.forEach(habitat => { %>
+            <% if (habitat.country.includes(user.country)) { %>
+            <option value="<%= habitat.name %>" <%= listItem.habitat.some(hab => hab.name === habitat.name) ? 'selected' : '' %>><%= habitat.name %></option>    
+            <% }}) %>
         </select></br>
         <label for="country">Country:</label>
         <select name="country" id="country">
-           <option value="botswana" <%= listItem.country === 'botswana' ? 'selected' : '' %>>Botswana</option>
-            <option value="france" <%= listItem.country === 'france' ? 'selected' : '' %>>France</option>
-            <option value="united kingdom" <%= listItem.country === 'united kingdom' ? 'selected' : '' %>>United Kingdom</option>
+           <option value="botswana">Botswana</option>
+            <option value="france">France</option>
+            <option value="united kingdom" selected>United Kingdom</option>
         </select></br>
         <label for="location">Local Location:</label>
         <input type="text" name="location" id="location" />
