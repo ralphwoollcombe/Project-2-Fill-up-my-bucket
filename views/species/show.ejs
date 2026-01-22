@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= species[0].displayName.trim().split('-').join(' ') %></title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bungee&family=Chewy&family=Fjalla+One&family=Freckle+Face&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Londrina+Shadow&family=Mansalva&family=Patrick+Hand&family=Poller+One&family=Ribeye+Marrow&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&family=Wellfleet&display=swap" rel="stylesheet">
+<title><%= species[0].displayName.trim().split('-').join(' ') %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
@@ -18,8 +22,10 @@
     <% }}) %>
     <a href="/species/<%= species[0].name.trim().split(' ').join('-') %>/new">Add new <%= species[0].name %> sighting</a>
     <h2>Habitats:</h2>
+    <ul>
     <% habitatArray.forEach((habitat) => { %>            
-        <a href="/habitat/<%=habitat._id%>"> <%= habitat.displayName %> </a></br>
+        <li><a href="/habitat/<%=habitat._id%>"> <%= habitat.displayName %> </a></li>
         <% }) %>
+      </ul>
 </body>
 </html>

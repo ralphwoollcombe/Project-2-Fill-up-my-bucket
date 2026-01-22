@@ -11,7 +11,8 @@ const Habitat = require('../models/habitat.js');
 router.get('/', async (req, res) => {
     try {
     const allSpecies = await List.find({
-        owner: res.locals.user._id
+        owner: res.locals.user._id,
+        seen: true
     })
     const uniqueNames = [];
     allSpecies.forEach(bird => {

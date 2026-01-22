@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bungee&family=Chewy&family=Fjalla+One&family=Freckle+Face&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Londrina+Shadow&family=Mansalva&family=Patrick+Hand&family=Poller+One&family=Ribeye+Marrow&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&family=Wellfleet&display=swap" rel="stylesheet">
 <title>Habitats</title>
 </head>
 <body>
@@ -19,10 +22,16 @@
         <% }}) %>
     </ul>
     <% } %>
-    <form action="/habitat" method="POST">
-    <label for="name"></label>
-    <input type='text' name="name" id="newHabitat"/>
-    <button type="submit">Add New Habitat</button>
-    </form>
+    <div class="form-wrapper">
+        <form action="/habitat" method="POST">
+            <div class="flex-form-row">
+                <div class="flex-form-column">
+                    <label for="name"></label>
+                    <input type='text' name="name" id="newHabitat"/>
+                </div>
+            </div>
+        <button class="submit" type="submit">Add New Habitat</button>
+        </form>
+    </div>
 </body>
 </html>

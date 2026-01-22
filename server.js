@@ -31,7 +31,7 @@ mongoose.connection.on('connected', async () => {
 })
 
 
-
+app.use(express.static('css'));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));

@@ -4,29 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
-<title>New Species</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bungee&family=Chewy&family=Fjalla+One&family=Freckle+Face&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Londrina+Shadow&family=Mansalva&family=Patrick+Hand&family=Poller+One&family=Ribeye+Marrow&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&family=Wellfleet&display=swap" rel="stylesheet">
+    <title>New Wish List Entry</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Add a New Species To Hit List!</h1>
-    <form action="/hit-list" method="POST">
-        <label for="name">Species Name:</label>
-        <input type="text" name="name" id="name" />
-        <select name="class" id="class">
-            <option value="mammal">Mammal</option>
-            <option value="bird" selected>Bird</option>
-            <option value="reptile">Reptile</option>
-            <option value="amphibian">Amphibian</option>
-            <option value="fish">Fish</option>
-            <option value="invertebrate">Invertebrate</option>
-        </select></br>
-        <label for="country">Country:</label>
-        <select name="country" id="country">
-           <option value="botswana">Botswana</option>
-            <option value="france">France</option>
-            <option value="united kingdom" selected>United Kingdom</option>
-        </select></br>
-        <button type="submit">Add To Wish List</button>
-    </form>
+    <h1>Add a New Species To Wish List!</h1>
+    <div class="form-wrapper">
+        <form action="/hit-list" method="POST">
+            <div class="flex-form-row">
+                <div class="flex-form-column">
+                    <label for="name">Species Name:</label>
+                    <input type="text" name="name" id="name" />
+                </div>
+                <div class="flex-form-column">
+                    <label for="class">Class:</label>
+                    <select name="class" id="class">
+                        <option value="mammal">Mammal</option>
+                        <option value="bird" selected>Bird</option>
+                        <option value="reptile">Reptile</option>
+                        <option value="amphibian">Amphibian</option>
+                        <option value="fish">Fish</option>
+                        <option value="invertebrate">Invertebrate</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex-form-row">
+                <div class="flex-form-column">
+                    <label for="country">Country:</label>
+                    <select name="country" id="country">
+                        <option value="botswana">Botswana</option>
+                        <option value="france">France</option>
+                        <option value="united kingdom" selected>United Kingdom</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex-form-row">
+                <button class="submit" type="submit">Add To Wish List</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

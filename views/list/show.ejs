@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bungee&family=Chewy&family=Fjalla+One&family=Freckle+Face&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Londrina+Shadow&family=Mansalva&family=Patrick+Hand&family=Poller+One&family=Ribeye+Marrow&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&family=Wellfleet&display=swap" rel="stylesheet">
 <title><%= listItem.name %></title>
 </head>
 <body>
@@ -30,9 +33,11 @@
     <label for="seen">Seen:</label> 
     <input type="checkbox" name="seen" id="seen" checked disabled/>
     <form action="/list/<%=listItem._id%>?_method=DELETE" method="POST">
-        <button type="submit">Delete This Sighting</button>
+        <button class="delete" type="submit">Delete This Sighting</button>
     </form>
-    <a href="/list/<%= listItem._id %>/edit">Edit This Sighting</a>
-    <a href="/species/<%= listItem.name %>">Species Page</a>
+    <div class="link-button-wrapper">
+        <a class="link-button" href="/list/<%= listItem._id %>/edit">Edit This Sighting</a>
+        <a class="link-button" href="/species/<%= listItem.name %>">Species Page</a>
+    </div>
 </body>
 </html>

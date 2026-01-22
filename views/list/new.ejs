@@ -3,47 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bungee&family=Chewy&family=Fjalla+One&family=Freckle+Face&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Londrina+Shadow&family=Mansalva&family=Patrick+Hand&family=Poller+One&family=Ribeye+Marrow&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&family=Wellfleet&display=swap" rel="stylesheet">
 <title>New Species</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New Species!</h1>
+    <div class="form-wrapper">
     <form action="/list" method="POST">
-        <label for="name">Species Name:</label>
-        <input type="text" name="name" id="name" />
-        <select name="class" id="class">
-            <option value="mammal">Mammal</option>
-            <option value="bird" selected>Bird</option>
-            <option value="reptile">Reptile</option>
-            <option value="amphibian">Amphibian</option>
-            <option value="fish">Fish</option>
-            <option value="invertebrate">Invertebrate</option>
-        </select></br>
-        <label for="description">Description: </label>
-        <textarea type="text" name="description" id="description"></textarea></br>
-        <label for="behaviour">Behaviour: </label>
-        <input type="text" name="behaviour" id="behaviour"/></br>
-        <label for="habitat">Habitat:</label>
-        <select name="habitat" id="habitat">
-            <% habitats.forEach(habitat => { %>
-            <% if (habitat.country.includes(user.country)) { %>
-            <option value="<%= habitat.name %>"><%= habitat.name %></option>    
-            <% }}) %>
-        </select></br>
-        <label for="country">Country:</label>
-        <select name="country" id="country">
-           <option value="botswana">Botswana</option>
-            <option value="france">France</option>
-            <option value="united kingdom" selected>United Kingdom</option>
-        </select></br>
-        <label for="location">Local Location:</label>
-        <input type="text" name="location" id="location" />
-        <label for="date">Date:</label>
-        <input type="date" name="date" id="date"/>
-        <label for="numberSeen">Number Spotted:</label>
-        <input type="number" name="numberSeen" id="numberSeen"/>
-        <button type="submit">Add This Species</button>
+        <div class="flex-form-row">
+            <div class="flex-form-column">
+                <label for="name">Species Name:</label>
+                <input type="text" name="name" id="name" />
+            </div>
+            <div class="flex-form-column">
+                <label for="class">Class:</label>
+                <select name="class" id="class">
+                    <option value="mammal">Mammal</option>
+                    <option value="bird" selected>Bird</option>
+                    <option value="reptile">Reptile</option>
+                    <option value="amphibian">Amphibian</option>
+                    <option value="fish">Fish</option>
+                    <option value="invertebrate">Invertebrate</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex-form-row">
+            <div class="flex-form-column">
+            <label for="description">Description: </label>
+            <textarea type="text" name="description" id="description"></textarea>
+            </div>
+        </div>
+        <div class="flex-form-row">
+            <div class="flex-form-column">
+            <label for="behaviour">Behaviour: </label>
+            <input type="text" name="behaviour" id="behaviour"/>
+            </div> 
+        </div>
+         <div class="flex-form-row">
+            <div class="flex-form-column">
+                <label for="habitat">Habitat:</label>
+                <select name="habitat" id="habitat">
+                    <% habitats.forEach(habitat => { %>
+                    <% if (habitat.country.includes(user.country)) { %>
+                    <option value="<%= habitat.name %>"><%= habitat.name %></option>    
+                    <% }}) %>
+                </select>   
+            </div> 
+            <div class="flex-form-column">
+                <label for="country">Country:</label>
+                <select name="country" id="country">
+                    <option value="botswana">Botswana</option>
+                    <option value="france">France</option>
+                    <option value="united kingdom" selected>United Kingdom</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex-form-row">
+            <div class="flex-form-column">
+                <label for="location">Local Location:</label>
+                <input type="text" name="location" id="location" />
+            </div>
+            <div class="flex-form-column">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date"/>
+            </div>
+        </div>
+        <div class="flex-form-row">
+            <div class="flex-form-column">
+            <label for="numberSeen">Number Spotted:</label>
+            <input type="number" name="numberSeen" id="numberSeen"/>
+            </div>
+        </div>
+        <div class="flex-form-row">
+            <button class="submit" type="submit">Add This Species</button>
+        </div>
     </form>
+    </div>
 </body>
 </html>

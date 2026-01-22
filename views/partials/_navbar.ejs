@@ -1,13 +1,17 @@
-<nav>
+<nav class="nav">
+    
   <% if (user) { %>
+    <a href="/">
+    <img src="/resources/logo-blue-very-small.png" alt="Twitcher Logo">
+    </a>
     <a href="/species">Species</a>
     <a href="/list">Sightings</a>
     <a href="/hit-list">Wish List</a>
     <a href="/habitat">Habitats</a>
     <a href="/list/new">Add New Sighting</a>
-    <a href="/auth/sign-out">Sign Out</a>
+    <a href="/auth/sign-out" class='sign' id="sign-out">Sign Out</a>
   <% } else { %>
-    <a href="/auth/register"> Register</a>
-    <a href="/auth/sign-in">Sign In</a>
+    <a href="/auth/register" class="sign" id="register"> Register</a>
+    <a href="/auth/sign-in" class="sign" id="sign-in">Sign In</a>
   <% } %>
 </nav>
