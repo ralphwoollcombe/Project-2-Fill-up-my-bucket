@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= species[0].displayName %></title>
+    <title><%= species[0].displayName.trim().split('-').join(' ') %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Species: <%= species[0].displayName %></h1>
+    <h1>Species: <%= species[0].displayName.trim().split('-').join(' ') %></h1>
     <% species.forEach((sighting, index) => { %>
+    <% if (!sighting) { %>
+    <h2>No sightings yet of this species!</h2>
+         <% } else { %>
     <h2>Sighting <%= index + 1 %>:</h2> 
     <p>Date: <%= sighting.formattedDate %></br> Location: <%= sighting.location %></p>
     <a href="/list/<%= sighting._id %>">Sighting Page</a>
-    <% }) %>
-    <a href="/species/<%= species[0].name %>/new">Add new <%= species[0].name %> sighting</a>
+    <% }}) %>
+    <a href="/species/<%= species[0].name.trim().split(' ').join('-') %>/new">Add new <%= species[0].name %> sighting</a>
     <h2>Habitats:</h2>
-    <ul>
-    <% species.forEach((sighting, index) => { %>
-        <% sighting.habitat.forEach((habitat, index) => { %>
-            
-        <li> <%= sighting.habitat %> </li>
+    <% habitatArray.forEach((habitat) => { %>            
+        <a href="/habitat/<%=habitat._id%>"> <%= habitat.displayName %> </a></br>
         <% }) %>
-    <% }) %>
-    </ul>
 </body>
 </html>

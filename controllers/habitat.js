@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
             name: req.body.name,
             country: [userCountryId],
         });
-        console.log('This is the new habitat', newHabitat)
+        // console.log('This is the new habitat', newHabitat)
         }
         res.redirect('/habitat')
     } catch (error) {
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
 router.get('/:habitatId',async (req, res) => {
     const habitat = await Habitat.findById(req.params.habitatId)
     habitat.displayName = habitat.name.charAt(0).toUpperCase() + habitat.name.slice(1)
-    console.log('this is the habitat', habitat)
+    // console.log('this is the habitat', habitat)
     const species = await List.find({
         habitat: req.params.habitatId,
         owner: res.locals.user._id
@@ -59,7 +59,8 @@ router.get('/:habitatId',async (req, res) => {
     .populate('habitat')
     .populate('country')
     .populate('owner');
-    console.log('species', species);
+    species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
+    // console.log('species', species);
     res.render('habitat/show.ejs', {
         species: species,
         habitat: habitat

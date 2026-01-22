@@ -8,12 +8,16 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Habitats</h1>
-    <ul>
+    <% if (habitats.length === 0) { %>
+    <h2>No habitats listed!</h2>
+         <% } else { %>
+            <ul>
         <% habitats.forEach(habitat => { %>
        <% if (habitat.country.some(item => {return item._id == user.country})) {%>
         <li><a href="/habitat/<%= habitat._id %>"><%= habitat.displayName %></a></li>
         <% }}) %>
     </ul>
+    <% } %>
     <form action="/habitat" method="POST">
     <label for="name"></label>
     <input type='text' name="name" id="newHabitat"/>

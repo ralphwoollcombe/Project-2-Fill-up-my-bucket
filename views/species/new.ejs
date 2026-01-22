@@ -8,9 +8,9 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New <%= species.displayName %> Sighting!</h1>
-    <form action="/species/<%= species.name %>" method="POST">
+    <form action="/species/<%= species.name.trim().split(' ').join('-') %>" method="POST">
         <label for="name">Species Name:</label>
-        <input type="text" name="name" id="name" disabled value="<%= species.name %>"/>
+        <input type="text" name="name" id="name" readonly value="<%= species.name %>"/>
         <select name="class" id="class">
             <option value="mammal">Mammal</option>
             <option value="bird" selected>Bird</option>

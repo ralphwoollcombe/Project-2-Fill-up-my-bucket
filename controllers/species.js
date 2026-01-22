@@ -6,6 +6,8 @@ const User = require('../models/user.js');
 const Country = require('../models/country.js');
 const Habitat = require('../models/habitat.js');
 
+
+
 router.get('/', async (req, res) => {
     try {
     const allSpecies = await List.find({
@@ -14,28 +16,22 @@ router.get('/', async (req, res) => {
     const uniqueNames = [...new Set(allSpecies.map(bird => bird.name))];
     console.log(uniqueNames)
     // await List.distinct('name');
-    const capUniqueNames = uniqueNames.map(bird => bird.charAt(0).toUpperCase() + bird.slice(1));
-
-    res.render('species/index.ejs', {species: capUniqueNames});
+    const species = uniqueNames.map(bird => ({
+        name: bird.trim().split(' ').join('-'),
+        displayName: bird.charAt(0).toUpperCase() + bird.slice(1)
+    }));
+    res.render('species/index.ejs', {species});
     } catch (error) {
         console.log(error);
         res.redirect('/')
     }
 })
-router.get('/:speciesName/new', async (req, res) => {
-    const speciesName = req.params.speciesName
-    const countries = await Country.find();
-    const habitats = await Habitat.find();
-    const species = await List.findOne({name: speciesName})
-    species.displayName = species.name.charAt(0).toUpperCase() + species.name.slice(1);
-    console.log('this is the species', species)
-    res.render(`species/new.ejs`, {countries, habitats, species});
-});
 
 router.get('/:speciesName', async (req, res) => {
     try {
+    const speciesName = req.params.speciesName.trim().split('-').join(' ').toLowerCase();
     const species = await List.find({
-        name: req.params.speciesName,
+        name: speciesName,
           owner: res.locals.user._id
     }).populate('habitat');
     species.forEach(bird => {
@@ -47,17 +43,38 @@ router.get('/:speciesName', async (req, res) => {
     })
     species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
     console.log(species);
+    const habitatArray = [];
     species.forEach((sighting, index) => { 
         sighting.habitat.forEach((habitat, index) => {
-        
-        })
+            if (!habitatArray.includes(habitat)) {
+                habitatArray.push(habitat);
+        }})
     })
-    res.render('species/show.ejs', {species: species});
+    habitatArray.forEach(hab => {hab.displayName = hab.name.charAt(0).toUpperCase() + hab.name.slice(1)});
+    // console.log('habitat array', habitatArray)
+    res.render('species/show.ejs', {
+        species: species,
+        habitatArray
+    });
     } catch (error) {
         console.log(error);
         res.redirect('/')
     }
 })
+
+router.get('/:speciesName/new', async (req, res) => {
+    const speciesName = req.params.speciesName.trim().split('-').join(' ').toLowerCase();    
+    const countries = await Country.find();
+    const habitats = await Habitat.find();
+    const species = await List.findOne({name: speciesName})
+    species.displayName = species.name.charAt(0).toUpperCase() + species.name.slice(1);
+    console.log('this is the species', species)
+    res.render(`species/new.ejs`, {countries, 
+        habitats, 
+        species});
+});
+
+
 
 router.post('/:speciesName', async (req, res) => {
     try {
@@ -73,7 +90,7 @@ router.post('/:speciesName', async (req, res) => {
         newListItem.owner = req.session.user._id;
         // console.log(newListItem);
         newListItem.save();
-        res.redirect(`/species/${species}`);
+        res.redirect(`/species/${req.params.speciesName}`);
     } catch (error) {
         console.log(error);
         res.redirect('/')

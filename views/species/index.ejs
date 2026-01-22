@@ -9,11 +9,15 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Species List</h1>
     <h2>Species I Have Spotted!</h2>
-    <ul>
+    <% if (species.length === 0) { %>
+    <h2>No species spotted yet!</h2>
+         <% } else { %>
+            <ul>
         <% species.forEach(item => { %>
-        <li><a href="/species/<%= item %>"><%= item %></a></li>
+        <li><a href="/species/<%= item.name %>"><%= item.displayName %></a></li>
         <% }) %>
     </ul>
+    <% } %>
     <!-- <a href="/list/new">Add New Sighting</a><br> -->
 </body>
 </html>

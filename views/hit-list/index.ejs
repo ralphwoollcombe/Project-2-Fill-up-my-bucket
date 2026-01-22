@@ -9,6 +9,9 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>My Wish List</h1>
     <h2>Birds I Hope to Spot</h2>
+    <% if (listItems.length === 0) { %>
+    <h2>No sightings yet!</h2>
+         <% } else { %>
     <ul>
         <% listItems.forEach(item => { %>
         <li><%= item.name %></li>
@@ -18,6 +21,7 @@
         <a href="/hit-list/<%= item._id %>/edit">Add to Sightings</a>
         <% }) %>
     </ul>
+    <% } %>
     <a href="/hit-list/new">Add New Species To Wish List</a><br>
 </body>
 </html>
