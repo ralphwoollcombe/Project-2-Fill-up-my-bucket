@@ -13,7 +13,12 @@ router.get('/', async (req, res) => {
     const allSpecies = await List.find({
         owner: res.locals.user._id
     })
-    const uniqueNames = [...new Set(allSpecies.map(bird => bird.name))];
+    const uniqueNames = [];
+    allSpecies.forEach(bird => {
+        if (!uniqueNames.includes(bird.name)) {
+            uniqueNames.push(bird.name);
+        };
+    });
     console.log(uniqueNames)
     // await List.distinct('name');
     const species = uniqueNames.map(bird => ({
@@ -36,9 +41,15 @@ router.get('/:speciesName', async (req, res) => {
     }).populate('habitat');
     species.forEach(bird => {
     const date = bird.date;
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
     const year = date.getFullYear();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
     bird.formattedDate = `${day}.${month}.${year}`
     })
     species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});

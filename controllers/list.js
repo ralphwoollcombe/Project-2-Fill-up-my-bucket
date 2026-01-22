@@ -14,9 +14,15 @@ router.get('/', async (req, res) => {
     }). populate('owner');
     getListItems.forEach(bird => {
     const date = bird.date;
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
     const year = date.getFullYear();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
     bird.formattedDate = `${day}.${month}.${year}`
     })
     getListItems.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
@@ -62,10 +68,16 @@ router.post('/', async (req, res) => {
 router.get('/:listId', async (req,res) => {
   const listItem = await List.findById(req.params.listId)
   .populate('country').populate('habitat');
-  const date = listItem.date;
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
+    const date = listItem.date;
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
   listItem.formattedDate = `${day}.${month}.${year}`
   listItem.displayName = listItem.name.charAt(0).toUpperCase() + listItem.name.slice(1);
     res.render("list/show.ejs", {
