@@ -179,7 +179,7 @@ form input, form textarea, form select {
 
 nav a:hover {
     background-color: #ffd493;
- border-radius: 15px;
+    border-radius: 15px;
 }
 
 ul {
@@ -208,7 +208,6 @@ a {
     margin: 10px;
     text-decoration: none; 
     font-weight: 500;
-    
 }
 
 a:link {
@@ -217,7 +216,6 @@ a:link {
 
 a:visited {
     color:#154780;
-
 }
 
 li:hover {
@@ -326,14 +324,20 @@ li:hover {
 
 #main-title {
     font-family: "Rock Salt";
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 #main-page-wrapper {
-    background: #ffd49370;
+    background: #ffd493;
+    opacity: 0.8;
     border-radius: 300px;
     padding: 30px 40px;
     max-width: 600px;
     margin: 40px auto;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+#second-main-title {
+    margin: 0 0;
+    font-family: "Rock Salt";
 }

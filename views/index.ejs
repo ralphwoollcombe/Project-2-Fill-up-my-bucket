@@ -14,9 +14,11 @@
     <h1 id="main-title" >Twitcher</h1>
     <div class="logo"><img src="/resources/logo-blue-small.png" alt="Twitcher Logo"></div>
   <% if (user) { %>
-    <h2>Welcome to Twitcher, <%= user.name %></h2>
+    <h2 id="second-main-title" >Track your bird sightings!</h2>
+    <h2 id="second-main-title" >Welcome, <%= user.name %></h2>
   <% } else { %>
-    <h2>Welcome to Twitcher, Guest!</h2>
+    <h2 id="second-main-title" >Track your bird sightings!</h2>
+    <h2 id="second-main-title" >Welcome, Guest!</h2>
   <% } %>
 </div>
 </body>
