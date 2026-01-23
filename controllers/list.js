@@ -49,14 +49,10 @@ router.post('/', async (req, res) => {
     try {
        const country = await Country.findOne({name: req.body.country})
        const habitat = await Habitat.findOne({name: req.body.habitat})
-    //    console.log('this is the country', country)
-    //    console.log('this is the habitat', habitat)
         req.body.country = [country._id]
         req.body.habitat = [habitat._id];
-    //    console.log(req.body)
        const newListItem = new List(req.body);
         newListItem.owner = req.session.user._id;
-        // console.log(newListItem);
         newListItem.save();
         res.redirect('/list');
     } catch (error) {
@@ -102,13 +98,14 @@ router.delete('/:listId', async (req, res) => {
 
 router.get('/:listId/edit', async (req, res) => {
     try {
-        const countries = await Country.find();
-        const habitats = await Habitat.find();
-        const listItem = await List.findById(req.params.listId).populate('habitat');
+        const habitats = await Habitat.find({});
+        const countries = await Country.find({});
+        const listItem = await List.findById(req.params.listId).populate('habitat').populate('country');
         res.render('list/edit.ejs', {
             listItem: listItem,
             habitats,
-            countries
+            countries,
+            user: req.session.user
         })
     } catch (error) {
         console.log(error);

@@ -12,7 +12,7 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New <%= species.displayName %> Sighting!</h1>
-    <div class="form-wrapper">
+    <div class="form-wrapper form">
         <form action="/species/<%= species.name.trim().split(' ').join('-') %>" method="POST">
             <div class="flex-form-row">
                 <div class="flex-form-column">
@@ -46,10 +46,10 @@
             <div class="flex-form-row">
                 <div class="flex-form-column">
                     <label for="habitat">Habitat:</label>
-                    <select name="habitat" id="habitat">
+                   <select name="habitat" id="habitat">
                         <% habitats.forEach(habitat => { %>
                             <% if (habitat.country.includes(user.country)) { %>
-                                <option value="<%= habitat.name %>"><%= habitat.name %></option>    
+                                <option value="<%= habitat.name %>"><%= habitat.name %></option>
                             <% } %>
                         <% }) %>
                     </select>
@@ -58,7 +58,7 @@
                     <label for="country">Country:</label>
                     <select name="country" id="country">
                         <option value="botswana">Botswana</option>
-                        <option value="france">France</option>
+                        <option value="fiji">Fiji</option>
                         <option value="united kingdom" selected>United Kingdom</option>
                     </select>
                 </div>

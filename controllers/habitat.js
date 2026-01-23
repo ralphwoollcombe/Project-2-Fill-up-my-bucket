@@ -43,14 +43,23 @@ router.post('/', async (req, res) => {
 router.get('/:habitatId',async (req, res) => {
     const habitat = await Habitat.findById(req.params.habitatId)
     habitat.displayName = habitat.name.charAt(0).toUpperCase() + habitat.name.slice(1)
-    const species = await List.find({
+    const allSpecies = await List.find({
         habitat: req.params.habitatId,
         owner: res.locals.user._id
     })
     .populate('habitat')
     .populate('country')
     .populate('owner');
-    species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
+    const uniqueNames = [];
+    allSpecies.forEach(bird => {
+        if (!uniqueNames.includes(bird.name)) {
+            uniqueNames.push(bird.name);
+        };
+    });
+    const species = uniqueNames.map(bird => ({
+        name: bird.trim().split(' ').join('-'),
+        displayName: bird.charAt(0).toUpperCase() + bird.slice(1)
+    }));
     res.render('habitat/show.ejs', {
         species: species,
         habitat: habitat

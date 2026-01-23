@@ -7,10 +7,9 @@
 body {
     font-family: "lato", sans-serif;
     background: #FDBB58;
+    background-image: url("resources/main-background-img.png");
     color: rgb(0, 31, 80);
     line-height: 2;
-    /* margin-left: auto;
-    margin-right: auto; */
     margin-bottom: 40px;
 
 }
@@ -53,10 +52,16 @@ p {
     padding: 0 20px;
 }
 
-.form-wrapper {
+.form-wrapper.form {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #ffd493;
+    border-radius: 16px;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 form {
@@ -78,7 +83,7 @@ form label {
 
 .flex-form-row {
     display: flex;
-    gap: 1rem;
+    gap: 5px;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -96,6 +101,7 @@ form label {
 
 .sighting-card {
   background: #ffd493;
+  opacity: 0.9;
   border-radius: 16px;
   padding: 30px 40px;
   max-width: 900px;
@@ -135,21 +141,22 @@ form label {
   margin: 0;
 }
 .species-sighting {
-background: rgba(255, 255, 255, 0.25);
-  border-radius: 16px;
-  padding: 30px 40px;
-  max-width: 900px;
-  margin: 40px auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    background: #ffd493;
+    opacity: 0.9;
+    border-radius: 16px;
+    padding: 30px 40px;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 form input, form textarea, form select {
     width: 100%;     
     padding: 10px;
-    margin-bottom: 1rem; 
+    margin-bottom: 5px; 
     color: rgb(0, 27, 70);
     border: 1px solid #1f508b;
-    background-color: #69B8FF;
+    background-color: rgb(153, 191, 221);
     border-radius: 6px;
     box-sizing: border-box;
 }  
@@ -217,10 +224,6 @@ li:hover {
     background-color: #e299c0;
 }
 
-/* a:active {
-
-}  */
-
 .link-button {
     padding: 5px 20px;
     margin: 30px 20px;
@@ -247,24 +250,22 @@ li:hover {
     align-items: center;
 }
 
-/* #numberSeen {
-    width: 30%;
-} */
 .submit {
     padding: 15px 30px;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 600;
-    background: rgb(153, 191, 221);
-    border: 2px solid hsl(0, 0%, 52%);
-    border-radius: 20px;
+    background: #1D60AF;
+    border: 2px solid #133964;
+    border-radius: 15px;;
+    color:#e4ebfe;
     cursor: pointer;
     box-shadow: 0 3px 3px rgba(0,0,0,0.1);
     text-decoration: none;
     display: inline-block;
 }
 
-.submit-button:hover {
+.submit:hover {
     background: #2477d7;
 }
 
@@ -298,6 +299,10 @@ li:hover {
     text-transform: capitalize;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .seen {
     text-align: center;
 }
@@ -312,13 +317,13 @@ li:hover {
 }
 
 .habitats.onIndex {
-    color: rgb(153, 191, 221);
+    color: rgb(221, 240, 255);
 }
 
 .habitat-cards:hover {
-    background: #3336e0;
+    background: #5356e1;
 }
 
-/* #newHabitat {
-
-} */
+#main-title {
+    font-family: "Rock Salt";
+}
