@@ -1,6 +1,6 @@
 # Twitcher App
 
-![Screenshot of The App](...)
+![Screenshot of The App]("/resources/screenshot-of-app")
 
 ---
 
@@ -26,8 +26,10 @@ App link here: .....
 Planning materials include wireframes, user stories and ERDs.
 
 #### Wireframes
+https://www.figma.com/design/9bg74oziGDlBnq7rn6As7U/Twitcher?t=xCVMLeCiAuLTCrUV-0
 
 #### ERDs
+https://dbdiagram.io/d/Twitcher-696e27aed6e030a024752391
 
 #### User Stories
 

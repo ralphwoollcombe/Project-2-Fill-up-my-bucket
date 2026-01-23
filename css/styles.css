@@ -326,4 +326,14 @@ li:hover {
 
 #main-title {
     font-family: "Rock Salt";
+    margin-top: 30px;
+}
+
+#main-page-wrapper {
+    background: #ffd49370;
+    border-radius: 300px;
+    padding: 30px 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
