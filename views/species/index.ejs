@@ -12,13 +12,13 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Species List</h1>
-    <h2>Species I Have Spotted!</h2>
+    <h2 class="title">Species I Have Spotted!</h2>
     <% if (species.length === 0) { %>
-    <h2>No species spotted yet!</h2>
+    <h3>No species spotted yet!</h3>
          <% } else { %>
             <ul>
         <% species.forEach(item => { %>
-        <li><a href="/species/<%= item.name %>"><%= item.displayName %></a></li>
+        <li><a class="species-cards" href="/species/<%= item.name %>"><%= item.displayName %></a></li>
         <% }) %>
     </ul>
     <% } %>

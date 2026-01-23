@@ -12,14 +12,14 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>My Wish List</h1>
-    <h2>Birds I Hope to Spot</h2>
+    <h2 class="title">Birds I Hope to Spot</h2>
     <% if (listItems.length === 0) { %>
-    <h2>No sightings yet!</h2>
+    <h3>No sightings yet!</h3>
          <% } else { %>
     <ul>
         <% listItems.forEach(item => { %>
         <li><%= item.name %></li>
-        <form action="/hit-list/<%=item._id%>?_method=DELETE" method="POST">
+        <form class="form-card" action="/hit-list/<%=item._id%>?_method=DELETE" method="POST">
             <button type="submit">Delete</button>
         </form>
         <a href="/hit-list/<%= item._id %>/edit">Add this bird to Sightings</a>

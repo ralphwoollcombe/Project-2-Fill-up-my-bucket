@@ -18,7 +18,7 @@
          <% } else { %>
     <ul>
         <% species.forEach(item => { %>
-        <li><a href="/species/<%= item.name %>"><%= item.displayName %></a></li>
+        <li class="species-cards" ><a href="/species/<%= item.name %>"><%= item.displayName %></a></li>
         <% }) %>
     </ul>
     <% } %>

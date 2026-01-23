@@ -7,10 +7,10 @@
 body {
     font-family: "lato", sans-serif;
     background: #FDBB58;
-    color: rgb(0, 27, 70);
+    color: rgb(0, 31, 80);
     line-height: 2;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     margin-bottom: 40px;
 
 }
@@ -18,16 +18,26 @@ body {
 h1 {
     text-align: center;
     text-transform: uppercase;
-    padding: 30px;
-    font-size: 40pt;
+    padding: 30px 0 10px 0;
+    font-size: 30pt;
+    color: rgb(0, 31, 80);
 }
 
 h2 {    
     text-align: center;
+    margin: 20px;
+}
+
+h2 .title {    
+    margin: 0 20px 20px 20px;
 }
 
 h3 {    
     text-align: center;
+}
+p {
+    text-align: center;
+
 }
 
 .logo {
@@ -39,6 +49,8 @@ h3 {
 
 .page-wrapper {
     margin: 0 auto;
+    max-width: 1100px;
+    padding: 0 20px;
 }
 
 .form-wrapper {
@@ -67,7 +79,7 @@ form label {
 .flex-form-row {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     margin: 0 0 20px 0;
@@ -82,15 +94,64 @@ form label {
     margin: 0 30px;
 }
 
+.sighting-card {
+  background: #ffd493;
+  border-radius: 16px;
+  padding: 30px 40px;
+  max-width: 900px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.form-card {
+  background: #ffd493;
+  border-radius: 16px;
+  padding: 30px 40px;
+  max-width: 900px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.sighting-row {
+  display: flex;
+  gap: 40px;      
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.sighting-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; 
+  align-items: center;
+  text-align: center;      
+}
+
+.sighting-column h2 {
+  margin: 0;
+}
+
+.sighting-column p {
+  margin: 0;
+}
+.species-sighting {
+background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 30px 40px;
+  max-width: 900px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 
 form input, form textarea, form select {
-  width: 100%;     
-  padding: 10px;
-   margin-bottom: 1rem; 
-  border: 1px solid #1f508b;
-  background-color: rgb(81, 142, 195);
-  border-radius: 6px;
-  box-sizing: border-box;
+    width: 100%;     
+    padding: 10px;
+    margin-bottom: 1rem; 
+    color: rgb(0, 27, 70);
+    border: 1px solid #1f508b;
+    background-color: #69B8FF;
+    border-radius: 6px;
+    box-sizing: border-box;
 }  
 
 .nav {
@@ -102,11 +163,16 @@ form input, form textarea, form select {
     align-items: center;
     padding: 10px 10px;
     margin: auto;
-    background: #d6993e;
+    background: #ffd493;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     color:rgb(0, 31, 80);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+}
 
+nav a:hover {
+    background-color: #ffd493;
+ border-radius: 15px;
 }
 
 ul {
@@ -120,11 +186,13 @@ ul {
 }
 
 li {
-    background:rgb(115, 126, 143);
-    overflow: hidden;
+    background:#BD81A1;
     border-radius: 10px;
     width: 50%;
+    margin: 10px 15px;
     text-align: center;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+    transition: 1s;
 }
 
 a {
@@ -132,6 +200,8 @@ a {
     padding: 20px;
     margin: 10px;
     text-decoration: none; 
+    font-weight: 500;
+    
 }
 
 a:link {
@@ -142,23 +212,24 @@ a:visited {
     color:#154780;
 
 }
-/* 
-a:hover {
 
+li:hover {
+    background-color: #e299c0;
 }
 
-a:active {
+/* a:active {
 
 }  */
 
 .link-button {
-    padding: 15px 30px;
+    padding: 5px 20px;
+    margin: 30px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
-    font-weight: 600;
-    background: linear-gradient(70deg, #3c7aed, #5d80d9);
-    border: 2px solid hsl(218, 57%, 47%);
-    border-radius: 50px;
+    font-weight: 500;
+    background: rgb(153, 191, 221);
+    border: 1px solid #1D60AF;
+    border-radius: 14px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     text-decoration: none;
@@ -166,7 +237,7 @@ a:active {
 }
 
 .link-button:hover {
-    background: #6176b4;
+    background: rgb(169, 213, 246);
 
 }
 
@@ -181,21 +252,24 @@ a:active {
 } */
 .submit {
     padding: 15px 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 14px;
+    text-transform: uppercase;
     font-weight: 600;
-    background: linear-gradient(70deg, #3c7aed, #5d80d9);
-    border: 2px solid hsl(218, 57%, 47%);
-    border-radius: 50px;
+    background: rgb(153, 191, 221);
+    border: 2px solid hsl(0, 0%, 52%);
+    border-radius: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
     text-decoration: none;
     display: inline-block;
 }
 
+.submit-button:hover {
+    background: #2477d7;
+}
+
 .sign {
     padding: 15px 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     font-weight: 600;
     background: rgb(153, 191, 221);
@@ -209,7 +283,6 @@ a:active {
 
 .delete {
     padding: 15px 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     font-weight: 600;
     background: linear-gradient(70deg, #3c7aed, #5d80d9);
@@ -220,6 +293,32 @@ a:active {
     text-decoration: none;
     display: inline-block;
 }
+
+.capitalise {
+    text-transform: capitalize;
+}
+
+.seen {
+    text-align: center;
+}
+
+.species-cards {
+    text-transform: uppercase;
+}
+
+.habitat-cards {
+    text-transform: uppercase;
+        background: #20228e;
+}
+
+.habitats.onIndex {
+    color: rgb(153, 191, 221);
+}
+
+.habitat-cards:hover {
+    background: #3336e0;
+}
+
 /* #newHabitat {
 
 } */

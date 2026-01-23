@@ -10,34 +10,60 @@
 <title><%= listItem.name %></title>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Species sighted: <%= listItem.displayName %></h1>
-    <h2>Location spotted:</h2> 
+<%- include('../partials/_navbar.ejs') %>
+<div class="sighting-card page-wrapper">
+<h1>Sighting of: <%= listItem.displayName %></h1>
+<div class="sighting-row">
+  <div class="sighting-column">
+    <h2>Class:</h2>
+    <p class="capitalise"><%= listItem.class %></p>
+  </div>
+</div>
+<div class="sighting-row">
+  <div class="sighting-column">
+    <h2>Location spotted:</h2>
     <p><%= listItem.location %></p>
-    <h2>Date spotted:</h2> 
+  </div>
+  <div class="sighting-column">
+    <h2>Date spotted:</h2>
     <p><%= listItem.formattedDate %></p>
-    <h2>Description:</h2> 
+  </div>
+</div>
+<div class="sighting-row">
+  <div class="sighting-column">
+    <h2>Description:</h2>
     <p><%= listItem.description %></p>
-    <h2>Behaviour:</h2> 
+  </div>
+</div>
+<div class="sighting-row">
+  <div class="sighting-column">
+    <h2>Behaviour:</h2>
     <p><%= listItem.behaviour %></p>
+  </div>
+</div>
+<div class="sighting-row">
+  <div class="sighting-column">
     <h2>Country:</h2>
-    <% listItem.country.forEach(item => { %> 
-    <p><%= item.name %></p>
-    <% }) %> 
-    <h2>Habitat:</h2> 
-    <% listItem.habitat.forEach(item => { %> 
-    <p><%= item.name %></p>
-    <% }) %> 
-    <h2>Class:</h2> 
-    <p><%= listItem.class %></p>
-    <label for="seen">Seen:</label> 
-    <input type="checkbox" name="seen" id="seen" checked disabled/>
+    <% listItem.country.forEach(item => { %>
+      <p class="capitalise"><%= item.name %></p>
+    <% }) %>
+  </div>
+  <div class="sighting-column">
+    <h2>Habitat:</h2>
+    <% listItem.habitat.forEach(item => { %>
+      <p class="capitalise"><%= item.name %></p>
+    <% }) %>
+  </div>
+</div>
+    <div class="form-wrapper" >
     <form action="/list/<%=listItem._id%>?_method=DELETE" method="POST">
-        <button class="delete" type="submit">Delete This Sighting</button>
+         <a class="link-button" href="/list/<%= listItem._id %>/edit">Edit This Sighting</a>
+        <button class="submit" type="submit">Delete entry</button>
     </form>
-    <div class="link-button-wrapper">
-        <a class="link-button" href="/list/<%= listItem._id %>/edit">Edit This Sighting</a>
-        <a class="link-button" href="/species/<%= listItem.name %>">Species Page</a>
     </div>
+</div>
+<div class="link-button-wrapper">
+    <a class="link-button" href="/species/<%= listItem.name %>">Species Page</a>
+</div>
 </body>
 </html>
