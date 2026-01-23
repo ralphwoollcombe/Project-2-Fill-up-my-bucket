@@ -18,11 +18,12 @@
          <% } else { %>
     <ul>
         <% listItems.forEach(item => { %>
-        <li><%= item.name %></li>
-        <form class="form-card" action="/hit-list/<%=item._id%>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
+        <div class="wish-list" ><li><span class="uppercase" ><%= item.name %></span></li>
+        <form class action="/hit-list/<%=item._id%>?_method=DELETE" method="POST">
+            <button class="submit" type="submit">Delete</button>
         </form>
-        <a href="/hit-list/<%= item._id %>/edit">Add this bird to Sightings</a>
+        <a class="link-button" href="/hit-list/<%= item._id %>/edit">Add this bird to Sightings</a>
+        </div>
         <% }) %>
     </ul>
     <% } %>

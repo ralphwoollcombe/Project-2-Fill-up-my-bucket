@@ -34,9 +34,24 @@ h2 .title {
 h3 {    
     text-align: center;
 }
+
 p {
     text-align: center;
+}
 
+span {
+    padding: 30px;
+}
+
+.wish-list {
+     background:#BD81A1;
+    border-radius: 10px;
+    width: 50%;
+    margin: 20px 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+    transition: 1s;
 }
 
 .logo {
@@ -192,7 +207,7 @@ ul {
     text-transform: capitalize;
 }
 
-li {
+li.sighting-list {
     background:#BD81A1;
     border-radius: 10px;
     width: 50%;
@@ -218,7 +233,7 @@ a:visited {
     color:#154780;
 }
 
-li:hover {
+li.sighting-list:hover {
     background-color: #e299c0;
 }
 
@@ -311,7 +326,13 @@ li:hover {
 
 .habitat-cards {
     text-transform: uppercase;
-        background: #20228e;
+    background: #20228e;
+    border-radius: 10px;
+    width: 50%;
+    margin: 10px 15px;
+    text-align: center;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+    transition: 1s;
 }
 
 .habitats.onIndex {
