@@ -10,28 +10,28 @@
 <title>Habitats</title>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
     <h1>Habitats</h1>
-    <% if (habitats.length === 0) { %>
-    <h3>No habitats listed!</h3>
-         <% } else { %>
+        <% if (habitats.length === 0) { %>
+        <h3>No habitats listed!</h3>
+            <% } else { %>
             <ul>
-        <% habitats.forEach(habitat => { %>
-       <% if (habitat.country.some(item => {return item._id == user.country})) {%>
-        <li class="habitat-cards" ><a class="habitats onIndex" href="/habitat/<%= habitat._id %>"><%= habitat.displayName %></a></li>
-        <% }}) %>
-    </ul>
-    <% } %>
-    <div class="form-wrapper">
-        <form class="form-card" action="/habitat" method="POST">
-            <div class="flex-form-row">
-                <div class="flex-form-column">
-                    <label for="name">Add a New Habitat:</label>
-                    <input type='text' name="name" id="newHabitat"/>
-                </div>
+                <% habitats.forEach(habitat => { %>
+                <% if (habitat.country.some(item => {return item._id == user.country})) {%>
+                    <li class="habitat-cards" ><a class="habitats onIndex" href="/habitat/<%= habitat._id %>"><%= habitat.displayName %></a></li>
+                <% }}) %>
+            </ul>
+            <% } %>
+            <div class="form-wrapper">
+                <form class="form-card" action="/habitat" method="POST">
+                    <div class="flex-form-row">
+                        <div class="flex-form-column">
+                            <label for="name">Add a New Habitat:</label>
+                            <input type='text' name="name" id="newHabitat"/>
+                        </div>
+                    </div>
+                    <button class="submit" type="submit">submit</button>
+                </form>
             </div>
-        <button class="submit" type="submit">submit</button>
-        </form>
-    </div>
 </body>
 </html>

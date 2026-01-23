@@ -10,8 +10,6 @@ router.get('/', async (req, res) => {
     try {
     let habitats = await Habitat.find({});
     habitats.forEach(habitat => {habitat.displayName = habitat.name.charAt(0).toUpperCase() + habitat.name.slice(1)})
-    // console.log('all habitats', habitats);
-    // console.log('session user', req.session.user)
     res.render('habitat/index.ejs', {
         habitats: habitats,
         user: req.session.user
@@ -26,20 +24,14 @@ router.post('/', async (req, res) => {
         const habitatName = req.body.name.toLowerCase();
         const userCountryId = req.session.user.country
         const habitatExists = await Habitat.findOne({name: habitatName})
-        console.log('This is the req.body', habitatName)
-        console.log('This habitat exists', habitatExists)
         if (habitatExists) {
             habitatExists.country.push(userCountryId);
             habitatExists.save();
         } else {
-        // const newHabitat = new Habitat(req.body);
-        // newHabitat.country.push(userCountryId);
-        // newHabitat.save();
         const newHabitat = await Habitat.create({
             name: req.body.name,
             country: [userCountryId],
         });
-        // console.log('This is the new habitat', newHabitat)
         }
         res.redirect('/habitat')
     } catch (error) {
@@ -51,7 +43,6 @@ router.post('/', async (req, res) => {
 router.get('/:habitatId',async (req, res) => {
     const habitat = await Habitat.findById(req.params.habitatId)
     habitat.displayName = habitat.name.charAt(0).toUpperCase() + habitat.name.slice(1)
-    // console.log('this is the habitat', habitat)
     const species = await List.find({
         habitat: req.params.habitatId,
         owner: res.locals.user._id
@@ -60,7 +51,6 @@ router.get('/:habitatId',async (req, res) => {
     .populate('country')
     .populate('owner');
     species.forEach(bird => {bird.displayName = bird.name.charAt(0).toUpperCase() + bird.name.slice(1)});
-    // console.log('species', species);
     res.render('habitat/show.ejs', {
         species: species,
         habitat: habitat

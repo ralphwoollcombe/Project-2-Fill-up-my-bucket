@@ -14,7 +14,7 @@
     <h1>My Sightings</h1>
     <% if (listItems.length === 0) { %>
     <h3>No sightings yet!</h3>
-         <% } else { %>
+    <% } else { %>
     <ul>
         <% listItems.forEach((item, index) => { %>
         <li><a href="/list/<%= item._id %>"><%= item.displayName %>:</br> Spotted on <%= item.formattedDate %></a></li>

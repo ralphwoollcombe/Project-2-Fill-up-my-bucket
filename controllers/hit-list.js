@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
         seen: false,
         owner: res.locals.user._id
     }). populate('owner');
-    console.log('all hit list items', getHitListItems);
     res.render('hit-list/index.ejs', {
         listItems: getHitListItems,
     })} catch (error) {
@@ -53,7 +52,6 @@ router.delete('/:listId', async (req, res) => {
     try {
         const listItem = await List.findById(req.params.listId);
         if (listItem.owner.equals(req.session.user._id)) {
-            console.log('Permission granted')
             await listItem.deleteOne();
             res.redirect('/hit-list')
         } else {
@@ -85,16 +83,15 @@ router.get('/:listId/edit', async (req, res) => {
 
 router.put('/:listId', async (req, res) => {
   try {
-    const country = await Country.findOne({name: req.body.country})
-       const habitat = await Habitat.findOne({name: req.body.habitat})
-       const listItem = await List.findById(req.params.listId);
+        const country = await Country.findOne({name: req.body.country})
+        const habitat = await Habitat.findOne({name: req.body.habitat})
+        const listItem = await List.findById(req.params.listId);
     if (listItem.owner.equals(req.session.user._id)) {
     req.body.seen = true;
     req.body.country = [country._id]
     req.body.habitat = [habitat._id];
     await listItem.updateOne(req.body);
       res.redirect('/list');
-      console.log('This item is now spotted', listItem)
     } else {
       res.send("You don't have permission to do that.");
     }

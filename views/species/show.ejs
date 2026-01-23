@@ -14,24 +14,24 @@
     <h1>Species: <%= species[0].displayName.trim().split('-').join(' ') %></h1>
     <% species.forEach((sighting, index) => { %>
     <% if (!sighting) { %>
-    <h2>No sightings yet of this species!</h2>
-         <% } else { %>
-    <div class="species-sighting">
-    <h2>Sighting <%= index + 1 %>:</h2> 
-    <p>SPOTTED ON: <%= sighting.formattedDate %></br> SPOTTED IN: <%= sighting.location %></p>
-    <div class="link-button-wrapper">
-    <a class="link-button" href="/list/<%= sighting._id %>">Sighting Page</a>
-    </div>
-    </div>
+      <h2>No sightings yet of this species!</h2>
+    <% } else { %>
+      <div class="species-sighting">
+        <h2>Sighting <%= index + 1 %>:</h2> 
+        <p>SPOTTED ON: <%= sighting.formattedDate %></br> SPOTTED IN: <%= sighting.location %></p>
+        <div class="link-button-wrapper">
+          <a class="link-button" href="/list/<%= sighting._id %>">Sighting Page</a>
+        </div>
+      </div>
     <% }}) %>
-    <div class="link-button-wrapper">
-    <a class="link-button" href="/species/<%= species[0].name.trim().split(' ').join('-') %>/new">Add new <%= species[0].name %> sighting</a>
-    </div>
-    <h2>Habitats Spotted In:</h2>
-    <ul>
-    <% habitatArray.forEach((habitat) => { %>            
+      <div class="link-button-wrapper">
+        <a class="link-button" href="/species/<%= species[0].name.trim().split(' ').join('-') %>/new">Add new <%= species[0].name %> sighting</a>
+      </div>
+      <h2>Habitats Spotted In:</h2>
+      <ul>
+      <% habitatArray.forEach((habitat) => { %>            
         <li class="habitat-cards" ><a class="habitats onIndex" href="/habitat/<%=habitat._id%>"> <%= habitat.displayName %> </a></li>
-        <% }) %>
+      <% }) %>
       </ul>
 </body>
 </html>

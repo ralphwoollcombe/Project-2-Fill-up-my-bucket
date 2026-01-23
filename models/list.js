@@ -26,12 +26,10 @@ const listSchema = mongoose.Schema({
         type: Date,
     },
     habitat:  [{
-        // type: String
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Habitat',
     }],
     country: [{
-        // type: String
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Country',
     }],

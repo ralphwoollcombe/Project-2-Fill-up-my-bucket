@@ -27,7 +27,6 @@ mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', async () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`);
     await populateCountries()
-    // await populateHabitats();
 })
 
 

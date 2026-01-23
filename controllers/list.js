@@ -89,7 +89,6 @@ router.delete('/:listId', async (req, res) => {
     try {
         const listItem = await List.findById(req.params.listId);
         if (listItem.owner.equals(req.session.user._id)) {
-            console.log('Permission granted')
             await listItem.deleteOne();
             res.redirect('/list')
         } else {
@@ -106,7 +105,6 @@ router.get('/:listId/edit', async (req, res) => {
         const countries = await Country.find();
         const habitats = await Habitat.find();
         const listItem = await List.findById(req.params.listId).populate('habitat');
-        console.log('List Item ID', listItem)
         res.render('list/edit.ejs', {
             listItem: listItem,
             habitats,
@@ -132,12 +130,5 @@ router.put('/:listId', async (req, res) => {
     res.redirect('/');
   }
 });
-// router.post('/', async (req, res) => {
-//     try {
-//     } catch (error) {
-//         console.log(error);
-//         redirect('/')
-//     }
-// })
 
 module.exports = router
