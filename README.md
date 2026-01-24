@@ -25,6 +25,10 @@ App link here: .....
 ### Planning Materials  
 Planning materials include wireframes, user stories and ERDs.
 
+#### Trello board
+
+https://trello.com/invite/b/6968fc658528a35f87026e17/ATTIeffea5fcc98f47589e7b0e99089971fbBC02BB0C/twitcher 
+
 #### Wireframes
 https://www.figma.com/design/9bg74oziGDlBnq7rn6As7U/Twitcher?t=xCVMLeCiAuLTCrUV-0
 
@@ -33,7 +37,7 @@ https://dbdiagram.io/d/Twitcher-696e27aed6e030a024752391
 
 #### User Stories
 
-[See Userstories.txt]
+[See sserstories.txt]
 
 ---
 

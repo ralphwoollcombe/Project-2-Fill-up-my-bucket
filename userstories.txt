@@ -1,0 +1,17 @@
+As a new user, I want to easily create a new account, so I can access personalized features and services on the platform.
+As a registered user, I want to log in to my account, so I can access my personal data and interact with the platform’s features.
+As a logged-in user, I want the ability to log out of my account, to ensure its secure when I’m not using the platform.
+As a user, I want to be able to submit bird sighting entries to add to the 'My Sightings' page.
+As a user, I want to view all my sightings on a single page.
+As a user I want to be able to click on one of my sightings and be redirected to a page where I can see the details of the sighting.
+As a user I want the option to delete a sighting entry I've created.
+As a user I want to edit details of an entry.
+As a user, I want the option to add an entry to a 'Wish List' of birds I would like to see.
+As a user, I would liek to be able to see my Wish list entries on a single page.
+As a user I want to edit details of a wish list entry to become a sighting.
+As a user, I want to be able to navigate to a species page which shows me all species that have had sightings logged for them.
+As a user, I want to be able to click on a species and be taken to a page where I can see all the sightings for that particular species.
+As a user, I would like the option to add a new sighting entry for a particular species.
+As a user, I would like to be able to navigate to a page of all habitat types.
+As a user, I would like to be able to click on a habitat type and be taken to a page where I can see all sightings in that habitat type.
+As a user, I would like to be able to log out from any page.
